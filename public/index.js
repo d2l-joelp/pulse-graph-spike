@@ -5,7 +5,8 @@
 		height = 200 - margin.top - margin.bottom,
 		itemsPerScreen = 7,
 		barWidth = Math.floor(width / itemsPerScreen),
-		interpolationMethod = 'monotone';  // bundle, basis, cardinal, monotone
+		interpolationMethod = 'monotone', // bundle, basis, cardinal, monotone
+		daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 	
 	var parseDate = d3.time.format("%d-%b-%y").parse;
 	
@@ -83,6 +84,7 @@
 				.attr('class', 'line');
 				
 			//addDots(svg, data);
+			addDayText(svg, data);
 		})
 	}
 	
@@ -96,6 +98,36 @@
 			.attr('cy', plotOnYScale)
 			.attr('r', 3)
 			.style('fill', 'red');
+	}
+	
+	function getDayOfWeekString(date) {
+		return daysOfWeek[date.getDay()];
+	}
+	
+	function addDayText(svg, data) {
+		var daysOfWeek = svg.selectAll('text.day-of-week')
+			.data(data)
+			.enter()
+			.append('text');
+			
+		daysOfWeek.attr('x', plotFromCenterOfBars)
+			.attr('y', 20)
+			.text(function(d) {
+				return getDayOfWeekString(d.date);
+			})
+			.attr('class', 'day-of-week')
+		
+		var daysOfMonth = svg.selectAll('text.day-of-month')
+			.data(data)
+			.enter()
+			.append('text');
+			
+		daysOfMonth.attr('x', plotFromCenterOfBars)
+			.attr('y', 40)
+			.text(function(d) {
+				return d.date.getDate();
+			})
+			.attr('class', 'day-of-month')
 	}
 	
 	drawChart();
