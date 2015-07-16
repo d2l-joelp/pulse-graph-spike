@@ -1,0 +1,25 @@
+.background {
+	fill: white;
+}
+
+.bar {
+	fill: #e2e2e2;
+}
+
+.line {
+	stroke: #0b74ca;
+	stroke-width: 4;
+	fill: none;
+}
+
+.area {
+	fill: white;
+}
+
+/*.bar {
+	display: inline-block;
+	width: 20px;
+	height: 75px;
+	background-color: teal;
+	margin: 0 5px;
+}*/
