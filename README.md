@@ -5,5 +5,6 @@ This project includes code for re-creating the Brightspace Pulse app graph on th
 ## Running ##
 
 1. Install node.js
-2. Run `node app.js`
-3. In a browser, go to http://localhost:4000
+2. In project folder, run `npm install`
+3. In project folder, run `node app.js`
+4. In a browser, go to http://localhost:4000
